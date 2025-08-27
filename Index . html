@@ -1,1 +1,70 @@
+import React from "react";
+import "./Dashboard.css";
+import { FaUserCircle, FaHome, FaTasks, FaWallet, FaUser } from "react-icons/fa";
 
+export default function Dashboard() {
+  return (
+    <div className="dashboard-container">
+      {/* Header */}
+      <header className="dashboard-header">
+        <div className="logo">X METRIC N</div>
+        <div className="profile-icon">
+          <FaUserCircle size={36} />
+        </div>
+      </header>
+
+      {/* Account Balance */}
+      <section className="account-balance-section">
+        <div className="balance-label">ACCOUNT BALANCE</div>
+        <div className="balance-amount">$1,000,000</div>
+        <button className="auto-earn-btn">Auto-Earn</button>
+      </section>
+
+      {/* Quick Actions */}
+      <section className="quick-actions-section">
+        <button className="quick-action">Make Money</button>
+        <button className="quick-action">Invest</button>
+        <button className="quick-action">Trade</button>
+        <button className="quick-action">Manage Assets</button>
+      </section>
+
+      {/* Active Tasks Panel */}
+      <section className="active-tasks-section">
+        <div className="panel-title">Active Tasks</div>
+        <div className="no-tasks">
+          No active tasks. <span className="highlight">Click 'Make Money' to start.</span>
+        </div>
+      </section>
+
+      {/* Live Profit Ticker */}
+      <section className="profit-ticker-section">
+        <div className="ticker-wrap">
+          <div className="ticker">
+            <span>BTC: +$200 | ETH: +$150 | Auto-Task #1: +$45.27 &nbsp;&nbsp;</span>
+            <span>BTC: +$200 | ETH: +$150 | Auto-Task #1: +$45.27 &nbsp;&nbsp;</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Navigation Bar */}
+      <nav className="dashboard-nav">
+        <div className="nav-icon active">
+          <FaHome size={24} />
+          <span>Home</span>
+        </div>
+        <div className="nav-icon">
+          <FaTasks size={24} />
+          <span>Tasks</span>
+        </div>
+        <div className="nav-icon">
+          <FaWallet size={24} />
+          <span>Wallet</span>
+        </div>
+        <div className="nav-icon">
+          <FaUser size={24} />
+          <span>Profile</span>
+        </div>
+      </nav>
+    </div>
+  );
+}
