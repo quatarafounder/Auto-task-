@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X Metric N - Sign Up</title>
+    <style>
+        body {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 180, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(189, 0, 255, 0.1) 0%, transparent 50%);
+            color: #00FF47;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 100%;
+            margin: auto;
+            border: 1px solid #00B4FF;
+            border-radius: 12px;
+            padding: 20px;
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px rgba(0, 180, 255, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-weight: 100;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #00B4FF;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #BD00FF;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #00B4FF;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFFFFF;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        input:focus {
+            outline: none;
+            border-color: #00FF47;
+            box-shadow: 0 0 15px rgba(0, 255, 71, 0.3);
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00B4FF, #BD00FF);
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        #c1-tech-auth {
+            display: none;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #00FF47;
+        }
+        .auth-result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .founder-access {
+            background-color: rgba(0, 255, 71, 0.1);
+            color: #00FF47;
+            border: 1px solid #00FF47;
+        }
+        .admin-access {
+            background-color: rgba(189, 0, 255, 0.1);
+            color: #BD00FF;
+            border: 1px solid #BD00FF;
+        }
+        .error-message {
+            color: #FF003D;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>X METRIC N</h1>        
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="username">USERNAME</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">EMAIL</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label for="access-code">ACCESS CODE (OPTIONAL)</label>
+                <input type="password" id="access-code" placeholder="••••••">
+            </div>
+            <button type="submit">SIGN UP</button>
+            <div id="error-message" class="error-message"></div>
+        </form>
+
+        <div id="c1-tech-auth">
+            <h2>C1-TECH IDENTITY CHALLENGE</h2>
+            <div class="form-group">
+                <label for="auth-name">ENTER NAME</label>
+                <input type="text" id="auth-name" placeholder="Osagiede dean">
+            </div>
+            <button onclick="authenticate()">AUTHENTICATE</button>
+            <div id="auth-result"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = '';
+            
+            const accessCode = document.getElementById('access-code').value;
+            
+            if (accessCode === 'asura66') {
+                document.getElementById('signup-form').style.display = 'none';
+                document.getElementById('c1-tech-auth').style.display = 'block';
+            } else if (accessCode === '') {
+                alert('X METRIC N ACCOUNT CREATION INITIATED...');
+            } else {
+                errorMessage.textContent = 'ERROR: INVALID ACCESS CODE. SIGNUP CANCELLED.';
+            }
+        });
+
+        function authenticate() {
+            const name = document.getElementById('auth-name').value;
+            const authResult = document.getElementById('auth-result');
+            
+            authResult.className = 'auth-result';
+            
+            if (name.toLowerCase() === 'osagiede dean') {
+                authResult.classList.add('founder-access');
+                authResult.innerHTML = '✓ FOUNDER ACCESS GRANTED<br>BIOMETRIC VERIFICATION REQUIRED';
+            } else if (name) {
+                authResult.classList.add('admin-access');
+                authResult.innerHTML = 'ADMIN ACCESS GRANTED<br>BIOMETRIC SCAN INITIATING...';
+            } else {
+                authResult.innerHTML = 'PLEASE ENTER A NAME';
+            }
+        }
+    </script>
+</body>
+  </html>
