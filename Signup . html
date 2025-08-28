@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -151,7 +151,8 @@
                 document.getElementById('signup-form').style.display = 'none';
                 document.getElementById('c1-tech-auth').style.display = 'block';
             } else if (accessCode === '') {
-                alert('X METRIC N ACCOUNT CREATION INITIATED...');
+                // REDIRECT TO DASHBOARD - NO ALERT
+                window.location.href = "index.html";
             } else {
                 errorMessage.textContent = 'ERROR: INVALID ACCESS CODE. SIGNUP CANCELLED.';
             }
@@ -175,4 +176,4 @@
         }
     </script>
 </body>
-  </html>
+</html>
